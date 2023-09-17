@@ -1,0 +1,75 @@
+id: /subscriptions/b61c14ee-0646-4d4a-857a-7e76d6a5065c/resourceGroups/Maersk/providers/Microsoft.App/containerapps/ps-simple-app
+identity:
+  type: UserAssigned
+  userAssignedIdentities:
+    ? /subscriptions/b61c14ee-0646-4d4a-857a-7e76d6a5065c/resourcegroups/Maersk/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps-identity
+    : clientId: 124befb2-8ec0-4bdf-acfd-42b621c7e01a
+      principalId: d56848cc-4d38-4d0c-bb1a-0e092782f609
+location: West Europe
+name: ps-simple-app
+properties:
+  configuration:
+    activeRevisionsMode: Single
+    dapr: null
+    ingress:
+      additionalPortMappings: null
+      allowInsecure: false
+      clientCertificateMode: null
+      corsPolicy: null
+      customDomains: null
+      exposedPort: 0
+      external: true
+      fqdn: ps-simple-app.happyplant-05e06a8c.westeurope.azurecontainerapps.io
+      ipSecurityRestrictions: null
+      stickySessions: null
+      targetPort: 80
+      traffic:
+      - latestRevision: true
+        weight: 100
+      transport: Auto
+    maxInactiveRevisions: null
+    registries:
+    - identity: /subscriptions/b61c14ee-0646-4d4a-857a-7e76d6a5065c/resourcegroups/Maersk/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps-identity
+      passwordSecretRef: ''
+      server: psreppo.azurecr.io
+      username: ''
+    secrets: null
+    service: null
+  customDomainVerificationId: 28B4BA06E3D8BFAB4D4ADDFA78B81A26E6B38D4D647C87E44A17A214B19F0831
+  environmentId: /subscriptions/b61c14ee-0646-4d4a-857a-7e76d6a5065c/resourceGroups/Maersk/providers/Microsoft.App/managedEnvironments/ps-maersk-app
+  eventStreamEndpoint: https://westeurope.azurecontainerapps.dev/subscriptions/b61c14ee-0646-4d4a-857a-7e76d6a5065c/resourceGroups/Maersk/containerApps/ps-simple-app/eventstream
+  latestReadyRevisionName: ps-simple-app--f7cyozx
+  latestRevisionFqdn: ps-simple-app--f7cyozx.happyplant-05e06a8c.westeurope.azurecontainerapps.io
+  latestRevisionName: ps-simple-app--f7cyozx
+  managedEnvironmentId: /subscriptions/b61c14ee-0646-4d4a-857a-7e76d6a5065c/resourceGroups/Maersk/providers/Microsoft.App/managedEnvironments/ps-maersk-app
+  outboundIpAddresses:
+  - 20.82.74.41
+  provisioningState: Succeeded
+  runningStatus: Running
+  template:
+    containers:
+    - env:
+      - name: DEMO_MESSAGE
+        value: Hello Conatiner App
+      image: psreppo.azurecr.io/website:v3
+      name: ps-simple-app
+      resources:
+        cpu: 0.5
+        ephemeralStorage: 2Gi
+        memory: 1Gi
+    initContainers: null
+    revisionSuffix: ''
+    scale:
+      maxReplicas: 10
+      minReplicas: null
+      rules: null
+    serviceBinds: null
+    terminationGracePeriodSeconds: null
+    volumes: null
+  workloadProfileName: null
+resourceGroup: Maersk
+systemData:
+  lastModifiedAt: '2023-09-17T12:08:38.3199271'
+  lastModifiedBy: pschmidt@pasit.nl
+  lastModifiedByType: User
+type: Microsoft.App/containerApps

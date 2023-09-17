@@ -1,0 +1,56 @@
+﻿apiVersion: 2019-12-01
+location: westeurope
+name: maerskGroup
+properties:
+  containers:
+  - name: website-app
+    properties:
+      image: psreppo.azurecr.io/website:v3
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 80
+      environmentVariables:
+      - name: DEMO_MESSAGE
+        value: "Hello from Container Group"
+  - name: mssql
+    properties:
+      image: mcr.microsoft.com/mssql/server:2019-latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 2
+      ports:
+      - port: 1433
+      volumeMounts:
+      - mountPath: /var/opt/mssql
+        name: dbvolume
+      environmentVariables:
+      - name: MSSQL_PID
+        value: "Developer"
+      - name: ACCEPT_EULA
+        value: "Y"
+      - name: MSSQL_SA_PASSWORD
+        value: Test_1234567
+  osType: Linux
+  ipAddress:
+    type: Public
+    ports:
+    - protocol: tcp
+      port: 80
+    - protocol: tcp
+      port: 1433
+  volumes:
+  - name: dbvolume
+    azureFile:
+      shareName: database
+      storageAccountName: pscontainer
+      storageAccountKey: YZt/akH76Z65PR+RlMicIWPfLkAKCUxXE5txBJ3BE1o5Wh2s/Ufqg9JWa3jXs6FL5i/c0ykJv3oi+ASti7zlIg==
+  imageRegistryCredentials:
+  - server: psreppo.azurecr.io
+    username: psreppo
+    password: MxaI/2DQC/4jqNpCCZkJs5fSkZBJ53mVYaQH+h1uuv+ACRCsQE2M
+tags: {test: test}
+type: Microsoft.ContainerInstance/containerGroups
