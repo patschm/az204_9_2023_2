@@ -6,12 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="WebRequests.ps1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="WebRequests.ps1" />
-  </ItemGroup>
-
 </Project>
