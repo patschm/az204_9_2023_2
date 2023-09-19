@@ -6,9 +6,9 @@
     var itemToCreate = request.getBody();
 
     // validate properties
-    if (!("timestamp" in itemToCreate)) {
-        var ts = new Date();
-        itemToCreate["timestamp"] = ts.getTime();
+    if (!("WebSite" in itemToCreate)) {
+
+        itemToCreate["WebSite"] = "www." + itemToCreate["Name"] + ".com"
     }
 
     // update the item that will be created

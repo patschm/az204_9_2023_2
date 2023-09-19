@@ -6,14 +6,14 @@ namespace ACME.Frontend.ChangeTrackerConsole;
 
 internal class Program
 {
-    private const string _connectionString = "AccountEndpoint=https://ps-kosmo.documents.azure.com:443/;AccountKey=PFBUcQsBosuiw2MbTJywrEvSbEGqYMDEylBfG2flQxi4Zg4EFHqeti1WuvvYDoZGIvf8jGT2pU71bDTCT95Dtg==;";
-    private const string _database = "products";
+    private const string _connectionString = "AccountEndpoint=https://pskosmos.documents.azure.com:443/;AccountKey=iwNntoudaoLElqqdVeb4hvJumokMg4ZRWXGZnV3FNYNu49423IxqUAQW8aydjJRjWarFXYcQ6t7WACDbvgqxow==;";
+    private const string _database = "productDB";
 
     private static CosmosClient cosmosClient = new CosmosClient(_connectionString);
 
     static async Task Main(string[] args)
     {
-        await PrepareDatabaseAsync();
+        //await PrepareDatabaseAsync();
 
         // The lease container acts as a state storage and coordinates processing the change feed across multiple workers.
         // The lease container can be stored in the same account as the monitored container or in a separate account.

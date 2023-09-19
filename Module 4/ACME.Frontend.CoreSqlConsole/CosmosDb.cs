@@ -42,7 +42,7 @@ internal class CosmosDb
     {
         Console.WriteLine($"Creating Container {container}...");
         var result = await _cosmosClient.GetDatabase(Database)
-            .CreateContainerIfNotExistsAsync(container, "/partitionkey");
+            .CreateContainerIfNotExistsAsync(container, "/partitionkey", throughput:1300);
         return result.Container;
     }   
     private async Task WriteDocumentsAsync<TDoc>(Container container, IEnumerable<TDoc> documents) where TDoc : BaseDocument

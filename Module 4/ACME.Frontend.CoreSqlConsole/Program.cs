@@ -26,8 +26,8 @@ namespace ACME.Frontend.CoreSqlConsole;
 /// </summary>
 internal class Program
 {
-    private static string Host = "https://ps-cosmonaut.documents.azure.com:443/";
-    private static string PrimaryKey = "mtH3Bs91BFLEu0YRCen7QPLDurp70ac00DBMUfR65MnWIvtSuxLGTwMB4fZNxmx1PgiaE1S8rYI2ACDbMOgrFw==";
+    private static string Host = "https://pskosmos.documents.azure.com:443/";
+    private static string PrimaryKey = "iwNntoudaoLElqqdVeb4hvJumokMg4ZRWXGZnV3FNYNu49423IxqUAQW8aydjJRjWarFXYcQ6t7WACDbvgqxow==";
     private static string Database = "productDB";
     public static int Port = 443;
     public static bool EnableSSL = true;
@@ -49,8 +49,8 @@ internal class Program
         _cosmosClient = new CosmosClient(Host, PrimaryKey);
 
        // await PrepareDatabaseAsync();
-        //await QueryDocumentsAsync();
-        await QueryDocumentsWithContinuationAsync();
+        await QueryDocumentsAsync();
+        //await QueryDocumentsWithContinuationAsync();
         //await QueryDocumentsLinqAsync();
         //await InsertDocumentAsync();
         //await UpsertDocumentAsync();

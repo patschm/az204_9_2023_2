@@ -9,17 +9,17 @@ namespace CloudStorageV12;
 
 class Program
 {
-    private const string connectionString = "DefaultEndpointsProtocol=https;AccountName=psstoorsel;AccountKey=be+dlPE20RqDkWKirs8xZUs2VhLpxSlv+/KoRGCsILx/aPT/VK6Ut7wuZ1rC05o/cwmDnus7Sf3t+AStl6cSNw==;EndpointSuffix=core.windows.net";
+    private const string connectionString = "DefaultEndpointsProtocol=https;AccountName=ps24stoor;AccountKey=Jxxz9Xs9eDc2h41I021KMBSUalhlB8uVfF4lIpuhZQ784WCpih/36fs5+DOkc0ai8iPCaVPunUgm+ASty9w9Vg==;EndpointSuffix=core.windows.net";
     private static string basePath = Assembly.GetExecutingAssembly().Location;
 
     static async Task Main(string[] args)
     {
         basePath = basePath.Substring(0, basePath.IndexOf("\\bin") + 1);
-        WriteSimple();
+        //WriteSimple();
         //ReadSimple();
         //WriteBlockBlob();
         //await LeaseAsync();
-        //await MiscAsync();
+        await MiscAsync();
         
 
         // Optional. 
