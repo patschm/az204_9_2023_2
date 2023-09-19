@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Azure.Messaging;
 using Azure.Messaging.EventGrid;
 using EvtGridWebHook.Hubs;
-using Microsoft.AspNetCore.Http;
+using EvtGridWebHook.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -95,17 +89,17 @@ public class GridController : ControllerBase
     }
     private async Task<IActionResult> ValidateSubscriptionAsync(string body)
     {
-        var gridEvent = JsonConvert.DeserializeObject<List<GridEventModel>>(body).First();
+        var gridEvent = JsonConvert.DeserializeObject<List<GridEventModel>>(body)?.First();
         await _myhub.Clients.All.SendAsync(
             "gridupdate",
-            gridEvent.Id,
-            gridEvent.EventType,
-            gridEvent.Subject,
-            gridEvent.EventTime,
-            JsonConvert.SerializeObject(gridEvent.Data),
+            gridEvent?.Id,
+            gridEvent?.EventType,
+            gridEvent?.Subject,
+            gridEvent?.EventTime,
+            JsonConvert.SerializeObject(gridEvent?.Data),
             body);
 
-        var validationCode = gridEvent.Data["validationCode"];
+        var validationCode = gridEvent?.Data["validationCode"];
         return new JsonResult(new
         {
             validationResponse = validationCode
@@ -116,7 +110,7 @@ public class GridController : ControllerBase
         try
         {
             var eventData = JObject.Parse(jsonContent);
-            var version = eventData["cloudEventsVersion"].Value<string>();
+            var version = eventData["cloudEventsVersion"]?.Value<string>();
             return !string.IsNullOrEmpty(version);
         }
         catch (Exception e)

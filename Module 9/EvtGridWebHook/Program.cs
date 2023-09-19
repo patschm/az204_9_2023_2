@@ -1,3 +1,5 @@
+using EvtGridWebHook.Hubs;
+
 namespace EvtGridWebHook
 {
     public class Program
