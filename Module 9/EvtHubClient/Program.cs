@@ -8,8 +8,8 @@ namespace EvtHubClient;
 
 class Program
 {
-    private static string conStr = "Endpoint=sb://ps-account.servicebus.windows.net/;SharedAccessKeyName=pomper;SharedAccessKey=R4lEaIRJS8JN/Xvw9DxzgCpcqFilU/Tna+AEhAI7o5E=;EntityPath=hup";
-    private static string hubName = "hup";
+    private static string conStr = "Endpoint=sb://ps-hup.servicebus.windows.net/;SharedAccessKeyName=zender;SharedAccessKey=sZmG9FVxF1kdegAR8eSeDLgnIXsba45sX+AEhHS0lZU=;EntityPath=ps-topic";
+    private static string hubName = "ps-topic";
 
     static async Task Main(string[] args)
     {

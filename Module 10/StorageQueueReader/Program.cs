@@ -4,8 +4,8 @@ namespace StorageQueueReader;
 
 class Program
 {
-    static string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=psstoor;AccountKey=Hr/9y39UMzihBa1zD+FyudPw5XV/Z82QUGAz5jFc0b25YYcffNOsxq0mpdj7BdHHJUpWqdmj6pZFJb/osLQHWw==;EndpointSuffix=core.windows.net";
-    static string QueueName = "the-queue";
+    static string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=psqueuedemo;AccountKey=oXC76/5VcTdqUIGFh53iRH2evVx52UK0aObTYnyVnpBTz2b/w+1AV0d/W98ZTZPyfINpiJVvItM1+AStyLw9KQ==;EndpointSuffix=core.windows.net";
+    static string QueueName = "myqueue";
     static async Task Main(string[] args)
     {
         await ReadFromQueueAsync();
@@ -16,13 +16,20 @@ class Program
     private static async Task ReadFromQueueAsync()
     {
         var client = new QueueClient(ConnectionString, QueueName);
+        int i = 0;
         do
         {
             // 10 seconds "lease" time
-            var response = await client.ReceiveMessageAsync(TimeSpan.FromSeconds(10));
+            i++;
+            var response = await client.ReceiveMessageAsync(TimeSpan.FromSeconds(30));
             if (response.Value == null)
             {
                 await Task.Delay(100);
+                continue;
+            }
+            if (i % 10 == 0)
+            {
+                Console.WriteLine("Oooops");
                 continue;
             }
             var msg = response.Value;

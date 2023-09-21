@@ -8,9 +8,9 @@ namespace EvtGridCmds;
 
 class Program
 {
-    static string topicHost = "ps-topic.westeurope-1.eventgrid.azure.net";
+    static string topicHost = "ps-grid.westeurope-1.eventgrid.azure.net";
     static string topicEP = $"https://{topicHost}/api/events";
-    static string topicKey = "sISoKMvO69JAZtJ/AeuG/NiQtLcqVinNjBsWfBtr3G0=";
+    static string topicKey = "bJrQIs9GH31X0OhODOeb8yuUfddBrYtwk4nWaw68IBE=";
 
     static async Task Main(string[] args)
     {
@@ -28,8 +28,8 @@ class Program
             var gev = new EventGridEvent("Handmatig afgevuurd", "Click", "2.0", evtData);
             
             events.Add(gev);
-            await client.SendEventsAsync(events);
-            //await client.SendEventAsync(gev);
+            //await client.SendEventsAsync(events);
+            await client.SendEventAsync(gev);
             Console.WriteLine("Another event? (Esc to quit)");
             key = Console.ReadKey().Key;
         }
