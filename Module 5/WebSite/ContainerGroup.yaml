@@ -5,7 +5,7 @@ properties:
   containers:
   - name: website-app
     properties:
-      image: psreppo.azurecr.io/website:v3
+      image: psrepo.azurecr.io/webbie:v1
       resources:
         requests:
           cpu: 1
@@ -45,12 +45,12 @@ properties:
   volumes:
   - name: dbvolume
     azureFile:
-      shareName: database
+      shareName: dbschaar
       storageAccountName: pscontainer
       storageAccountKey: YZt/akH76Z65PR+RlMicIWPfLkAKCUxXE5txBJ3BE1o5Wh2s/Ufqg9JWa3jXs6FL5i/c0ykJv3oi+ASti7zlIg==
   imageRegistryCredentials:
-  - server: psreppo.azurecr.io
-    username: psreppo
-    password: MxaI/2DQC/4jqNpCCZkJs5fSkZBJ53mVYaQH+h1uuv+ACRCsQE2M
+  - server: psrepo.azurecr.io
+    username: psrepo
+    password: PWXFi79R47x9NNmdC13XehlCZXBd1JxAOGoGVUYAZO+ACRD7xjJF
 tags: {test: test}
 type: Microsoft.ContainerInstance/containerGroups

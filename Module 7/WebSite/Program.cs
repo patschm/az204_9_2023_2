@@ -12,17 +12,18 @@ var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 builder.Configuration.AddAzureAppConfiguration(options =>
 {
     options.Connect(connectionString)
-        .Select(KeyFilter.Any, environment)
-        .UseFeatureFlags(opts => {
-            opts.CacheExpirationInterval = TimeSpan.FromSeconds(10);
+        .Select(KeyFilter.Any, "Development")
+        .UseFeatureFlags(opts =>
+        {
+            //opts.CacheExpirationInterval = TimeSpan.FromSeconds(10);
         });
-    options.ConfigureKeyVault(conf => {
-        var token = new DefaultAzureCredential();
-        conf.SetCredential(token);
-    });
+    //options.ConfigureKeyVault(conf => {
+    //    var token = new DefaultAzureCredential();
+    //    conf.SetCredential(token);
+    //});
 });
-
-builder.Services.AddAzureAppConfiguration().AddFeatureManagement();
+builder.Services.AddAzureAppConfiguration();
+builder.Services.AddFeatureManagement();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

@@ -3,11 +3,11 @@ using Microsoft.Identity.Client;
 
 internal class Program
 {
-    private static string ServiceUrl = "https://localhost:7153/";
+    private static string ServiceUrl = "https://localhost:7239/";
     private static async Task Main(string[] args)
     {
-        await DoTheCodeFlowAsync();
-        //await DoTheCredentialFlowAsync();
+        //await DoTheCodeFlowAsync();
+        await DoTheCredentialFlowAsync();
         
         Console.ReadLine();
     }
@@ -18,16 +18,17 @@ internal class Program
         // 1) Create an application registration for platform Mobile and Desktop Application.
         //    This prepares Code Grant Flow
         // 2) Set Redirect Uri to http://localhost (must be http. Port is optional)
-        var app = PublicClientApplicationBuilder
-            .Create("fe33695a-2710-442d-a33d-15c9b7d6e7c5")
-            .WithAuthority(AzureCloudInstance.AzurePublic, "030b09d5-7f0f-40b0-8c01-03ac319b2d71")
-            .WithRedirectUri("http://localhost:8123");  // http scheme only!
+        var bld = PublicClientApplicationBuilder
+            .Create("c6fea2be-e146-4a69-b1a4-89f801a94aba")
+            .WithAuthority(AzureCloudInstance.AzurePublic, "consumers")
+            .WithRedirectUri("http://localhost:9898/");  // http scheme only!
 
-        var token = await app.Build()
+        var app = bld.Build();
         // .AcquireTokenByUsernamePassword
-        .AcquireTokenInteractive(
-            new string[] { "api://fe33695a-2710-442d-a33d-15c9b7d6e7c5/Lezen" })
-        .ExecuteAsync();
+        var token = await app.AcquireTokenInteractive(
+            new string[] { "api://e34d0820-3657-419a-a552-6ff358d6f6b8/Lezen" })
+            .ExecuteAsync();
+
         Console.WriteLine(token.AccessToken);
 
         var client = new HttpClient();
@@ -51,13 +52,13 @@ internal class Program
         //    d) Select the roles you defined in webapi registration
         //    e) Grant Admin consent on the newly created permission.
         var app = ConfidentialClientApplicationBuilder
-            .Create("d3ec77b5-8b43-4bdf-a13d-a692253f6fd2")
-            .WithTenantId("030b09d5-7f0f-40b0-8c01-03ac319b2d71")
-            .WithClientSecret("EFf8Q~o7ukvH0No4TL2JhHnyrTeKkactStOfnaQF");
+            .Create("e77768dd-4386-4f4e-9a3b-abf060b4dd4e")
+            .WithTenantId("consumers")
+            .WithClientSecret("eDO8Q~1WqFifucSTQ-3I1gDmm0ZEXanhbXQZaclK");
 
         var token = await app.Build()
             .AcquireTokenForClient(
-                new string[]{"api://a666f086-8635-4154-b6eb-7a6846484543/.default"}) // Api ID Uri from webapi regstration. Add /.default to it
+                new string[]{"api://e34d0820-3657-419a-a552-6ff358d6f6b8/.default"}) // Api ID Uri from webapi regstration. Add /.default to it
             .ExecuteAsync();
         Console.WriteLine(token.AccessToken);
 

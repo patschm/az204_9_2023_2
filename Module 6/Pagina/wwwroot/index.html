@@ -3,11 +3,11 @@
         <title>Client</title>
     </head>
     <body>
-        <a href="https://login.microsoftonline.com/030b09d5-7f0f-40b0-8c01-03ac319b2d71/oauth2/v2.0/authorize
+        <a href="https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize
         ?response_type=token
-        &client_id=fe33695a-2710-442d-a33d-15c9b7d6e7c5
+        &client_id=c6fea2be-e146-4a69-b1a4-89f801a94aba
         &redirect_uri=https://localhost:7038/index.html
-        &scope=api://fe33695a-2710-442d-a33d-15c9b7d6e7c5/Lezen
+        &scope=api://e34d0820-3657-419a-a552-6ff358d6f6b8/Lezen
         &response_mode=fragment&state=12345&nonce=678910">Login</a>
 
         <h2 id="txt"></h2>
@@ -20,7 +20,7 @@
             {
                 try
                 {
-                let resp =  await fetch("https://localhost:7153/weatherforecast", {
+                let resp =  await fetch("https://localhost:7239/weatherforecast", {
                     headers:{
                         "Authorization": "Bearer " + token
                         }
