@@ -20,7 +20,7 @@ namespace AppInsightTest
         static void Main(string[] args)
         {
             configuration = TelemetryConfiguration.CreateDefault();
-            configuration.ConnectionString = "InstrumentationKey=abbf7af7-a42f-41a0-aa83-d120f17fb7cf;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/";
+            configuration.ConnectionString = "InstrumentationKey=c6c24256-ed9f-49cf-888a-c26173d388ff;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/";
             TeleChannels(configuration, local:false);
 
 

@@ -6,15 +6,15 @@ namespace TopicClient;
 
 class Program
 {
-    static string EndPoint = "ps-zeurbus.servicebus.windows.net";
-    static (string Name, string Key) SasKeyManager = ("RootManageSharedAccessKey", "V7CAvAexUPQ38rs/vI03cKo4xgUctnmL7HuUlkLva+4=");
-    static (string Name, string Key) SasKeyWriter = ("Writer", "z0Lwh+Usrj9MtEfqidXYKHFiqortpKxd6g4u4tzNFwY=");
-    static string TopicName = "ze-topic";
+    static string EndPoint = "ps-servies.servicebus.windows.net";
+    static (string Name, string Key) SasKeyManager = ("RootManageSharedAccessKey", "q2gwZdFCxe9pbXA4+KrizDyV3Ot2l8Kiz+ASbIg5zfA=");
+    static (string Name, string Key) SasKeyWriter = ("Writer", "iUcHmWRy7ja2OhXtHjOPn3T96bQzMxy2e+ASbFZhWro=");
+    static string TopicName = "onderwerp";
 
     static async Task Main(string[] args)
     {
         //await ManageTopicAsync();
-        // await ManageSubscriptionsAsync();
+        //await ManageSubscriptionsAsync();
 
         await WriteToTopicAsync();
         Console.WriteLine("Done");
@@ -60,9 +60,9 @@ class Program
         var sender = client.CreateSender(TopicName);
 
         Random rnd = new Random(); 
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 1000; i++)
         {
-            var price = rnd.Next(0, 2000);
+            var price = rnd.Next(0, 1500);
             var msg = new ServiceBusMessage(BinaryData.FromString($"Sold (${price})"));
             msg.ApplicationProperties.Add("price", price);
             msg.ContentType = "string";

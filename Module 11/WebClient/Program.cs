@@ -6,7 +6,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         var currentEnv = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-        var baseUrl = builder.Configuration["Production:Products:DataServiceUrl"];
+        //var baseUrl = builder.Configuration["Production:Products:DataServiceUrl"];
+        var baseUrl = "https://ps-dataservice.azurewebsites.net";
         builder.Services.AddHttpClient("brands", options => options.BaseAddress = new Uri($"{baseUrl}/brands/"));
         builder.Services.AddHttpClient("products", options => options.BaseAddress = new Uri($"{baseUrl}/products/"));
         builder.Services.AddHttpClient("productgroups", options => options.BaseAddress = new Uri($"{baseUrl}/productgroups/"));
